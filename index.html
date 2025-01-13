@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rong Team</title>
+    <title>Rong team</title>
     <link rel="icon" href="logo.png">
     <style>
         /* General Reset */
@@ -22,6 +22,7 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            flex-direction: column;
         }
 
         .container {
@@ -104,20 +105,29 @@
             margin-top: 10px;
             color: #333;
         }
+
+    
+        a{
+           text-decoration: none; 
+           
+        }
+        a:hover{
+            color: #f7b42c;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>For my team</h1>
-        <p></p>
-        <textarea id="numberInput" placeholder="Input number here "></textarea>
-        <button onclick="processInput()">Check</button>
+        <a href="dork.html">ធ្វើលេខដក</a>
+        <textarea id="numberInput" placeholder="Input number here"></textarea>
+        <button onclick="processInput()">Check Number</button>
         
         <div class="result">
             <h2>Results:</h2>
-            <p><strong>លេខត្រឹមត្រូវ:</strong></p>
+            <p><strong>លេខត្រឹមត្រូវ :</strong></p>
             <pre id="uniqueNumbers" class="unique-numbers"></pre>
-            <p><strong>លេខជាន់:</strong> <span id="duplicatesCount"></span></p>
+            <p><strong>លេខជាន់មាន​​ :</strong> <span id="duplicatesCount"></span>​</p>
         </div>
     </div>
 
@@ -145,6 +155,21 @@
             // Display results
             document.getElementById('uniqueNumbers').innerText = uniqueNumbers.join('\n'); // Display each unique number in a new line
             document.getElementById('duplicatesCount').innerText = duplicatesCount;
+        }
+
+        function copyToClipboard() {
+            const uniqueNumbersText = document.getElementById('uniqueNumbers').innerText;
+            
+            // Create a temporary textarea element to hold the text for copying
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = uniqueNumbersText;
+            document.body.appendChild(tempTextArea);
+            
+            tempTextArea.select();  // Select the text
+            document.execCommand('copy');  // Copy the text to clipboard
+            
+            document.body.removeChild(tempTextArea);  // Remove the temporary textarea
+            alert('Unique numbers copied to clipboard!');
         }
     </script>
 </body>
