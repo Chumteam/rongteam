@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rong team</title>
+    <link rel="icon" href="logo.png">
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f7b42c, #fc575e);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .container {
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fc575e;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            outline: none;
+            resize: none;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea:focus {
+            border-color: #fc575e;
+        }
+
+        button {
+            background: #fc575e;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #f7b42c;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .result span {
+            font-weight: bold;
+            color: #fc575e;
+        }
+
+        .unique-numbers {
+            text-align: left;
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        /* Link Style */
+        .link {
+            font-size: 1rem;
+            color: black;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .link:hover {
+            color: #f7b42c;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="container">
+        <h1>For my team</h1>
+        <a href="index.html" class="link">Check numbeer</a>
+        <textarea id="phoneInput" placeholder="Input number here"></textarea>
+        <button onclick="formatPhoneNumbers()">Do</button>
+        
+        <div class="result">
+            <h2>Results:</h2>
+            <pre id="formattedNumbers" class="unique-numbers"></pre>
+        </div>
+    </div>
+
+    <script>
+        function formatPhoneNumbers() {
+            const input = document.getElementById('phoneInput').value;
+            const numbers = input
+                .split(/[\s,]+/)
+                .map(num => num.trim())
+                .filter(num => num !== "");
+
+            // Format each number
+            const formattedNumbers = numbers.map(num => {
+                return num.slice(0, 7) + '-' + num.slice(7);
+            });
+
+            // Display formatted numbers
+            document.getElementById('formattedNumbers').innerText = formattedNumbers.join('\n');
+        }
+    </script>
+</body>
+</html>
