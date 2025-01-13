@@ -94,45 +94,55 @@
             font-weight: bold;
             color: #fc575e;
         }
+
+        .unique-numbers {
+            text-align: left;
+            font-family: monospace;
+            white-space: pre-wrap; /* Maintains line breaks */
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>For my team</h1>
-        <p>Input the number</p>
-        <textarea id="numberInput" placeholder="Input the number here"></textarea>
+        <p></p>
+        <textarea id="numberInput" placeholder="Input number here "></textarea>
         <button onclick="processInput()">Check</button>
         
         <div class="result">
             <h2>Results:</h2>
-            <p><strong>លេខត្រឹមត្រូវ:</strong> <span id="uniqueNumbers"></span></p>
+            <p><strong>លេខត្រឹមត្រូវ:</strong></p>
+            <pre id="uniqueNumbers" class="unique-numbers"></pre>
             <p><strong>លេខជាន់:</strong> <span id="duplicatesCount"></span></p>
         </div>
     </div>
 
     <script>
         function processInput() {
-           
+            // Get user input
             const input = document.getElementById('numberInput').value;
             
-          
+            // Split input into an array of numbers
             const numbers = input
-                .split(/[\s,]+/) 
-                .map(num => num.trim()) 
-                .filter(num => num !== "");
+                .split(/[\s,]+/) // Split by commas, spaces, or newlines
+                .map(num => num.trim()) // Trim spaces
+                .filter(num => num !== ""); // Remove empty entries
             
-            
+            // Count occurrences of each number
             const countMap = {};
             numbers.forEach(num => {
                 countMap[num] = (countMap[num] || 0) + 1;
             });
 
-            
+            // Get unique numbers and count duplicates
             const uniqueNumbers = Object.keys(countMap);
             const duplicatesCount = numbers.length - uniqueNumbers.length;
 
-            
-            document.getElementById('uniqueNumbers').innerText = uniqueNumbers.join(', ');
+            // Display results
+            document.getElementById('uniqueNumbers').innerText = uniqueNumbers.join('\n'); // Display each unique number in a new line
             document.getElementById('duplicatesCount').innerText = duplicatesCount;
         }
     </script>
