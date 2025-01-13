@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicate Numbers</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f7b42c, #fc575e);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fc575e;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            outline: none;
+            resize: none;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea:focus {
+            border-color: #fc575e;
+        }
+
+        button {
+            background: #fc575e;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #f7b42c;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .result span {
+            font-weight: bold;
+            color: #fc575e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>For my team</h1>
+        <p>Input the number</p>
+        <textarea id="numberInput" placeholder="Input the number here"></textarea>
+        <button onclick="processInput()">Check</button>
+        
+        <div class="result">
+            <h2>Results:</h2>
+            <p><strong>លេខត្រឹមត្រូវ:</strong> <span id="uniqueNumbers"></span></p>
+            <p><strong>លេខជាន់:</strong> <span id="duplicatesCount"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function processInput() {
+           
+            const input = document.getElementById('numberInput').value;
+            
+          
+            const numbers = input
+                .split(/[\s,]+/) 
+                .map(num => num.trim()) 
+                .filter(num => num !== "");
+            
+            
+            const countMap = {};
+            numbers.forEach(num => {
+                countMap[num] = (countMap[num] || 0) + 1;
+            });
+
+            
+            const uniqueNumbers = Object.keys(countMap);
+            const duplicatesCount = numbers.length - uniqueNumbers.length;
+
+            
+            document.getElementById('uniqueNumbers').innerText = uniqueNumbers.join(', ');
+            document.getElementById('duplicatesCount').innerText = duplicatesCount;
+        }
+    </script>
+</body>
+</html>
